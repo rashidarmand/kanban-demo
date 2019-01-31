@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Board from './Board';
 
 const demoCards = ['Demo Card 1', 'Demo Card 2'];
 
@@ -31,9 +32,14 @@ export default class App extends Component {
     const { boards } = this.state;
 
     return (
-      <div>
-        <h1>Kanban</h1>
-        {boards.map(board => board.name)}
+      <div className='kanban'>
+        {boards.map(board => (
+          <Board 
+            name={ board.name }
+            color={ board.color }
+            cards={ board.cards }
+          />
+        ))}
       </div>
     )
   }
