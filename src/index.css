@@ -36,6 +36,66 @@ h1 {
   background: rgb(240, 240, 240);
 }
 
+.board-title {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.menu-options {
+  align-self: center;
+  height: 100%;
+}
+
+.menu-options:hover {
+  display: inline-block;
+  transition: all 0.4s;
+  cursor: pointer;
+  background: rgb(240, 240, 240);
+  color: black;
+}
+
+.tooltip {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  transition: all 0.4s;
+  opacity: 1;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: -120%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 11.5%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
 ul {
   list-style-type: none;
   padding: 0;

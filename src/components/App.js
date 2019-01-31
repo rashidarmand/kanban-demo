@@ -19,6 +19,10 @@ export default class App extends Component {
     }));
   }
 
+  deleteBoard = () => {
+    // 
+  }
+
   addCard = (id, text) => {
     const newCard = makeCard(text);
     this.setState(prevState => ({

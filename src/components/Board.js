@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import { GoKebabVertical } from "react-icons/go";
 
 export default class Board extends Component {
   state = {
@@ -12,10 +13,6 @@ export default class Board extends Component {
     this.setState({ [name]: value });
   }
 
-  handleChangeBoard = (e) => {
-
-  }
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { newCardText, id } = this.state
@@ -26,25 +23,22 @@ export default class Board extends Component {
   render() {
     const { name, color, cards, firstBoard, lastBoard, changeBoard } = this.props;
     const { newCardText, id } = this.state;
-    const h2Style = { 
-      background: color,
-      color: '#fff',
-      textAlign: 'center',
-      borderRadius: '5px'
-    }
 
     return (
       <div className='boards'>
-        <h2 style={ h2Style }>{ name }</h2>  
+        <h2 className='board-title' style={{ background: color }}>
+          { name } 
+          <div className='tooltip'>
+            <GoKebabVertical className='menu-options' />
+            <span className="tooltip-text">Blah</span>
+          </div>
+        </h2>  
         <ul>
           {cards.map(card => (
             <li className='cardLi' key={ card.id }>
-              <span onClick={ (e) => {
-                console.log(e.target.innerText)
-                changeBoard(id, card.id, e.target.innerText) }
-              }>{!firstBoard && '⬅️'}</span>
+              <span onClick={(e) => changeBoard(id, card.id, e.target.innerText)}>{!firstBoard && '⬅️'}</span>
               <Card text={ card.text } />
-              <span onClick={ (e) => changeBoard(id, card.id, e.target.value)  }>{!lastBoard && '➡️'}</span>
+              <span onClick={(e) => changeBoard(id, card.id, e.target.innerText)}>{!lastBoard && '➡️'}</span>
             </li>
           ))}
           <li>
