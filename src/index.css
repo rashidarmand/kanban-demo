@@ -26,6 +26,7 @@ h1 {
   grid-gap: 25px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin: 25px;
+  align-items: baseline;
 }
 
 .boards {
@@ -57,6 +58,12 @@ li {
 
 .cardLi > span {
   cursor: pointer;
+}
+
+.cardLi div {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .add-card {
