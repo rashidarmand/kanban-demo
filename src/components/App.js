@@ -1,32 +1,10 @@
 import React, { Component } from 'react';
+import { starterBoards } from '../utils/_data';
 import Board from './Board';
-
-const demoCards = ['Demo Card 1', 'Demo Card 2'];
 
 export default class App extends Component {
   state = {
-    boards: [
-      {
-        name: 'Winnie',
-        color: '#8E6E95',
-        cards: demoCards
-      },
-      {
-        name: 'Bob',
-        color: '#35A95C',
-        cards: demoCards
-      },
-      {
-        name: 'Thomas',
-        color: '#344759',
-        cards: demoCards
-      },
-      {
-        name: 'George',
-        color: '#E8741E',
-        cards: demoCards
-      }
-    ]
+    boards: starterBoards
   }
   render() {
     const { boards } = this.state;
@@ -34,7 +12,8 @@ export default class App extends Component {
     return (
       <div className='kanban'>
         {boards.map(board => (
-          <Board 
+          <Board
+            key={ board.id } 
             name={ board.name }
             color={ board.color }
             cards={ board.cards }

@@ -25,9 +25,50 @@ h1 {
   display: grid;
   grid-gap: 25px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 0 25px;
+  margin: 25px;
+}
+
+.boards {
+  border: 1px solid rgb(210, 210, 210);
+  padding: 5px;
+  border-radius: 5px;
+  background: rgb(240, 240, 240);
 }
 
 ul {
-  list-style: none;
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.add-card {
+  width: 100%;
+  font-size: 1rem;
+  resize: none;
+}
+
+.btn {
+  display: block;
+  padding: 10px;
+  margin: 5px auto;
+  background: transparent;
+  cursor: pointer;
+  border: 2px solid rgb(200, 200, 200);
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  border: 2px solid skyblue;
+  color: white;
+  transition: all 0.4s;
+  box-shadow: 0 0 0 30px black inset;
 }
