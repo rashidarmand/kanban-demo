@@ -88,15 +88,7 @@ const h1Style = {
 
 /*
   @TODO
-    1) Board Component✅
-    2) Card Component✅
-    3) Styling      ✅  
-    4) Add new card✅
-    5) Switch board  ✅
-
-  @BONUS
-    6) Add new boards✅
-    , delete boards
-    7) Edit, delete cards
-    8) Store state of application in local storage so it is still there on refreshing
+    1) delete boards
+    2) Edit, delete cards
+    3) Store state of application in local storage so it is still there on refreshing
 */

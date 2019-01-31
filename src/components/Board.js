@@ -30,7 +30,17 @@ export default class Board extends Component {
           { name } 
           <div className='tooltip'>
             <GoKebabVertical className='menu-options' />
-            <span className="tooltip-text">Blah</span>
+            <span className="tooltip-text">
+              {/* 
+                @TODO
+                  1) Add buttons here for delete / edit board
+                  2) Add click handlers to take care of it
+                  3) Decide on edit / delete cards.
+                  // Idea *
+                    - have the button to edit boards also hide icons for changing board
+                      and replace them with a 'edit-card' button on the right and 'delete-card' button on the left
+               */}
+            </span>
           </div>
         </h2>  
         <ul>
