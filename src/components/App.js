@@ -11,12 +11,14 @@ export default class App extends Component {
 
     return (
       <div className='kanban'>
-        {boards.map(board => (
+        {boards.map((board, i) => (
           <Board
             key={ board.id } 
             name={ board.name }
             color={ board.color }
             cards={ board.cards }
+            firstBoard={ i === 0 }
+            lastBoard={ boards.length - 1 === i }
           />
         ))}
       </div>

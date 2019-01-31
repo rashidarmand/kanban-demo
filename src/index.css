@@ -48,6 +48,17 @@ li {
   padding: 5px;
 }
 
+.cardLi {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 5px;
+  align-items: center;
+}
+
+.cardLi > span {
+  cursor: pointer;
+}
+
 .add-card {
   width: 100%;
   font-size: 1rem;

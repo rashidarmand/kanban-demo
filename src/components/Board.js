@@ -17,7 +17,7 @@ export default class Board extends Component {
   }
 
   render() {
-    const { name, color, cards } = this.props;
+    const { name, color, cards, firstBoard, lastBoard } = this.props;
     const { newCardText } = this.state;
     const h2Style = { 
       background: color,
@@ -31,8 +31,10 @@ export default class Board extends Component {
         <h2 style={ h2Style }>{ name }</h2>  
         <ul>
           {cards.map(card => (
-            <li key={ card.id }>
+            <li className='cardLi' key={ card.id }>
+              <span>{!firstBoard && '⬅️'}</span>
               <Card text={ card.text } />
+              <span>{!lastBoard && '➡️'}</span>
             </li>
           ))}
           <li>
