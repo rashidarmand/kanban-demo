@@ -3,7 +3,8 @@ import Card from './Card';
 
 export default class Board extends Component {
   state = {
-    newCardText: ''
+    newCardText: '',
+    id: this.props.id
   }
 
   handleChange = (e) => {
@@ -13,7 +14,9 @@ export default class Board extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitted', this.state.newCardText)
+    const { newCardText, id } = this.state
+    this.props.addCard(id, newCardText);
+    this.setState({ newCardText: '' })
   }
 
   render() {
