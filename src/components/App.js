@@ -37,8 +37,9 @@ export default class App extends Component {
     const cardBeingMoved = updatedBoards
       .find(board => board.id === boardId)
       .cards.find(card => card.id === cardId)
+    // Remove card from init board & add card to adjacent board
     updatedBoards.map((board, i) => {
-      if(i === initBoardIndex) board.cards = board.cards.filter(card => card.id !== cardId);
+      if(i === initBoardIndex) board.cards = board.cards.filter(card => card !== cardBeingMoved);
       if(i === adjacentBoard) board.cards = board.cards.concat([cardBeingMoved])
       return board;
     })
