@@ -66,7 +66,14 @@ li {
   text-transform: uppercase;
 }
 
-.btn:hover {
+.btn:disabled, .btn[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+}
+
+.btn:not([disabled]):hover {
   border: 2px solid skyblue;
   color: white;
   transition: all 0.4s;
