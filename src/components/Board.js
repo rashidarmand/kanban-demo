@@ -12,6 +12,10 @@ export default class Board extends Component {
     this.setState({ [name]: value });
   }
 
+  handleChangeBoard = (e) => {
+
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { newCardText, id } = this.state
@@ -20,8 +24,8 @@ export default class Board extends Component {
   }
 
   render() {
-    const { name, color, cards, firstBoard, lastBoard } = this.props;
-    const { newCardText } = this.state;
+    const { name, color, cards, firstBoard, lastBoard, changeBoard } = this.props;
+    const { newCardText, id } = this.state;
     const h2Style = { 
       background: color,
       color: '#fff',
@@ -35,9 +39,12 @@ export default class Board extends Component {
         <ul>
           {cards.map(card => (
             <li className='cardLi' key={ card.id }>
-              <span>{!firstBoard && '⬅️'}</span>
+              <span onClick={ (e) => {
+                console.log(e.target.innerText)
+                changeBoard(id, card.id, e.target.innerText) }
+              }>{!firstBoard && '⬅️'}</span>
               <Card text={ card.text } />
-              <span>{!lastBoard && '➡️'}</span>
+              <span onClick={ (e) => changeBoard(id, card.id, e.target.value)  }>{!lastBoard && '➡️'}</span>
             </li>
           ))}
           <li>
