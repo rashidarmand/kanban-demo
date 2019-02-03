@@ -22,7 +22,7 @@ export default class Board extends Component {
   }
 
   render() {
-    const { name, color, cards, firstBoard, lastBoard, changeBoard, editBoard, deleteBoard } = this.props;
+    const { name, color, cards, firstBoard, lastBoard, editCard, deleteCard, changeBoard, editBoard, deleteBoard } = this.props;
     const { newCardText, id } = this.state;
 
     return (
@@ -38,6 +38,8 @@ export default class Board extends Component {
           <CardList 
             cards={ cards } 
             id={ id } 
+            editCard={ editCard }
+            deleteCard={ deleteCard }
             changeBoard={ changeBoard } 
             firstBoard={ firstBoard } 
             lastBoard={ lastBoard } 
