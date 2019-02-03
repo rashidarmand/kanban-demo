@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Card from './Card';
-import Tooltip from './Tooltip';
+import CardList from './CardList';
+import BoardHeader from './BoardHeader';
 
 
 export default class Board extends Component {
@@ -21,30 +21,27 @@ export default class Board extends Component {
     this.setState({ newCardText: '' })
   }
 
-  handleClick = (e) => {
-    console.log('here')
-    debugger
-  }
-
   render() {
-    const { name, color, cards, firstBoard, lastBoard, changeBoard, deleteBoard } = this.props;
+    const { name, color, cards, firstBoard, lastBoard, changeBoard, editBoard, deleteBoard } = this.props;
     const { newCardText, id } = this.state;
 
     return (
       <div className='boards'>
-        <h2 className='board-title' style={{ background: color }}>
-          { name } 
-          <Tooltip  />
-          {/* @TODO: pass down deleteBoard */}
-        </h2>  
+        <BoardHeader 
+          name={ name } 
+          id={ id } 
+          color={ color } 
+          editBoard={ editBoard } 
+          deleteBoard={ deleteBoard } 
+        /> 
         <ul>
-          {cards.map(card => (
-            <li className='cardLi' key={ card.id }>
-              <span onClick={(e) => changeBoard(id, card.id, e.target.innerText)}>{!firstBoard && '⬅️'}</span>
-              <Card text={ card.text } />
-              <span onClick={(e) => changeBoard(id, card.id, e.target.innerText)}>{!lastBoard && '➡️'}</span>
-            </li>
-          ))}
+          <CardList 
+            cards={ cards } 
+            id={ id } 
+            changeBoard={ changeBoard } 
+            firstBoard={ firstBoard } 
+            lastBoard={ lastBoard } 
+          />
           <li>
             <form onSubmit={ this.handleSubmit }>
               <textarea 

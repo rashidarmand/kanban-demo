@@ -7,19 +7,22 @@ class Tooltip extends Component {
     showTooltip: false
   }
 
-  handleClick = () => this.setState(prevState => ({ showTooltip: !prevState.showTooltip }));
+  showToolTip = () => this.setState(prevState => ({ showTooltip: !prevState.showTooltip }));
 
+  handleShowInput = () => this.props.showInput();
+  
   render() {
     const { showTooltip } = this.state;
+    const { deleteBoard, id } = this.props;
     const tooltipTxt = showTooltip ? show : null;
     const focused = showTooltip ? active : null;
 
     return (
       <div className='tooltip'>
-        <GoKebabVertical style={ focused } className='menu-options' onClick={ this.handleClick } />
+        <GoKebabVertical style={ focused } className='menu-options' onClick={ this.showToolTip } />
         <span style={ tooltipTxt } className="tooltip-text">
-          <FiEdit/>
-          <FiXCircle/>
+          <FiEdit onClick={ this.handleShowInput }/>
+          <FiXCircle onClick={() => deleteBoard(id)}/>
           {/* 
             @TODO
               1) Add buttons here for delete / edit board

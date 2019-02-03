@@ -19,6 +19,15 @@ export default class App extends Component {
     }));
   }
 
+  editBoard = (id, newName) => {
+    const updatedBoardList = [...this.state.boards]
+      .map(board => {
+        if(board.id === id) board.name = newName;
+        return board;
+      });
+    this.setState({ boards: updatedBoardList });
+  }
+
   deleteBoard = (id) => {
     const updatedBoardList = [...this.state.boards]
       .filter(board => board.id !== id);
@@ -67,13 +76,11 @@ export default class App extends Component {
           {boards.map((board, i) => (
             <Board
               key={ board.id } 
-              id={ board.id }
-              name={ board.name }
-              color={ board.color }
-              cards={ board.cards }
-              addCard={ this.addCard }
+              {...board}
               firstBoard={ i === 0 }
               lastBoard={ boards.length - 1 === i }
+              addCard={ this.addCard }
+              editBoard={ this.editBoard }
               changeBoard={ this.changeBoard }
               deleteBoard={ this.deleteBoard }
             />
