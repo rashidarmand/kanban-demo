@@ -19,8 +19,10 @@ export default class App extends Component {
     }));
   }
 
-  deleteBoard = () => {
-    // 
+  deleteBoard = (id) => {
+    const updatedBoardList = [...this.state.boards]
+      .filter(board => board.id !== id);
+    this.setState({ boards : updatedBoardList })
   }
 
   addCard = (id, text) => {
@@ -73,6 +75,7 @@ export default class App extends Component {
               firstBoard={ i === 0 }
               lastBoard={ boards.length - 1 === i }
               changeBoard={ this.changeBoard }
+              deleteBoard={ this.deleteBoard }
             />
           ))}
         </div>

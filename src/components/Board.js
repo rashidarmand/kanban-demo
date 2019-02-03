@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from './Card';
-import { GoKebabVertical } from "react-icons/go";
+import Tooltip from './Tooltip';
+
 
 export default class Board extends Component {
   state = {
@@ -20,28 +21,21 @@ export default class Board extends Component {
     this.setState({ newCardText: '' })
   }
 
+  handleClick = (e) => {
+    console.log('here')
+    debugger
+  }
+
   render() {
-    const { name, color, cards, firstBoard, lastBoard, changeBoard } = this.props;
+    const { name, color, cards, firstBoard, lastBoard, changeBoard, deleteBoard } = this.props;
     const { newCardText, id } = this.state;
 
     return (
       <div className='boards'>
         <h2 className='board-title' style={{ background: color }}>
           { name } 
-          <div className='tooltip'>
-            <GoKebabVertical className='menu-options' />
-            <span className="tooltip-text">
-              {/* 
-                @TODO
-                  1) Add buttons here for delete / edit board
-                  2) Add click handlers to take care of it
-                  3) Decide on edit / delete cards.
-                  // Idea *
-                    - have the button to edit boards also hide icons for changing board
-                      and replace them with a 'edit-card' button on the right and 'delete-card' button on the left
-               */}
-            </span>
-          </div>
+          <Tooltip  />
+          {/* @TODO: pass down deleteBoard */}
         </h2>  
         <ul>
           {cards.map(card => (

@@ -63,12 +63,6 @@ h1 {
   height: 100%;
 }
 
-.tooltip:hover .tooltip-text {
-  visibility: visible;
-  transition: all 0.4s;
-  opacity: 1;
-}
-
 .tooltip .tooltip-text {
   visibility: hidden;
   opacity: 0;
@@ -83,6 +77,8 @@ h1 {
   bottom: 150%;
   left: -120%;
   margin-left: -60px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .tooltip .tooltip-text::after {
@@ -94,6 +90,10 @@ h1 {
   border-width: 5px;
   border-style: solid;
   border-color: black transparent transparent transparent;
+}
+
+.tooltip .tooltip-text * {
+  cursor: pointer;
 }
 
 ul {
