@@ -11,11 +11,9 @@ export default class App extends Component {
   addBoard = () => {
     const title = window.prompt('Please enter new board title');
     const newBoard = makeBoard(title);
+
     this.setState(prevState => ({
-      boards: [
-        ...prevState.boards,
-        newBoard
-      ]
+      boards: [...prevState.boards, newBoard]
     }));
   }
 
@@ -25,41 +23,67 @@ export default class App extends Component {
         if(board.id === id) board.name = newName;
         return board;
       });
+
     this.setState({ boards: updatedBoardList });
   }
 
   deleteBoard = (id) => {
     const updatedBoardList = [...this.state.boards]
       .filter(board => board.id !== id);
+
+    this.setState({ boards : updatedBoardList })
+  }
+
+  changeBoard = (boardId, cardId, direction) => {
+    const prevBoardList = [...this.state.boards];
+    const initBoardIndex = prevBoardList.findIndex(board => board.id === boardId);
+    const adjacentBoard = direction === '⬅️' ? initBoardIndex - 1 : initBoardIndex + 1;
+    const cardBeingMoved = prevBoardList[initBoardIndex]
+      .cards.find(card => card.id === cardId);
+    const updatedBoardList = prevBoardList
+      .map((board, i) => {
+        // remove card from init board
+        if(i === initBoardIndex) board.cards = board.cards.filter(card => card !== cardBeingMoved);
+        // add card to adjacent board
+        if(i === adjacentBoard) board.cards = board.cards.concat([cardBeingMoved])
+        return board;
+      });
+
     this.setState({ boards : updatedBoardList })
   }
 
   addCard = (id, text) => {
     const newCard = makeCard(text);
-    this.setState(prevState => ({
-      boards: prevState.boards.map(board => {
-        if(board.id === id) board.cards = board.cards.concat([newCard])
+    const updatedBoardList = [...this.state.boards]
+      .map(board => {
+        if(board.id === id) board.cards = [...board.cards, newCard];
         return board
-      })
-    }));
+      });
+
+    this.setState({ boards: updatedBoardList });
   }
 
-  changeBoard = (boardId, cardId, direction) => {
-    const { boards } = this.state;
-    const updatedBoards = [...boards];
-    const initBoardIndex = updatedBoards.findIndex(board => board.id === boardId);
-    const adjacentBoard = direction === '⬅️' ? initBoardIndex - 1 : initBoardIndex + 1;
-    const cardBeingMoved = updatedBoards
+  editCard = (boardId, cardId, text) => {
+    const initBoard = [...this.state.boards]
       .find(board => board.id === boardId)
-      .cards.find(card => card.id === cardId)
-    // Remove card from init board & add card to adjacent board
-    updatedBoards.map((board, i) => {
-      if(i === initBoardIndex) board.cards = board.cards.filter(card => card !== cardBeingMoved);
-      if(i === adjacentBoard) board.cards = board.cards.concat([cardBeingMoved])
-      return board;
-    })
+      .cards.map(card => {
+        if(card.id === cardId) card.text = text;
+        return card;
+      });
+    const updatedBoardList = [...this.state.boards]
+      .map(board => board.id === initBoard.id ? initBoard : board);
 
-    this.setState({ boards : updatedBoards })
+    this.setState({ boards: updatedBoardList });
+  }
+
+  deleteCard = (boardId, cardId) => {
+    const initBoard = [...this.state.boards]
+      .find(board => board.id === boardId)
+      .cards.filter(card => card.id !== cardId);
+    const updatedBoardList = [...this.state.boards]
+      .map(board => board.id === initBoard.id ? initBoard : board);
+      
+    this.setState({ boards: updatedBoardList });
   }
 
 
@@ -80,6 +104,8 @@ export default class App extends Component {
               firstBoard={ i === 0 }
               lastBoard={ boards.length - 1 === i }
               addCard={ this.addCard }
+              editCard={ this.editCard }
+              deleteCard={ this.deleteCard }
               editBoard={ this.editBoard }
               changeBoard={ this.changeBoard }
               deleteBoard={ this.deleteBoard }
