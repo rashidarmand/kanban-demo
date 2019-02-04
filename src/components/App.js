@@ -92,7 +92,7 @@ export default class App extends Component {
     return (
       <Fragment>
         <div>
-          <h1 style={h1Style}>Kanban Board Practice</h1>
+          <h1 style={h1Style}>Kanban Board Demo</h1>
           <button className="btn" onClick={ this.addBoard }>Add New Board</button>
         </div>
         <div className='kanban'>
@@ -121,9 +121,3 @@ const h1Style = {
   textDecoration: 'underline'
 }
 
-/*
-  @TODO
-    1) delete boards
-    2) Edit, delete cards
-    3) Store state of application in local storage so it is still there on refreshing
-*/

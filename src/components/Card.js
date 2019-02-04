@@ -58,10 +58,4 @@ class Card extends React.Component {
   }
 }
 
-/*
-  @TODO:
-    - On card click show edit button on left and delete button on right
-    - Call editCard & deleteCard functions when their respective buttons are clicked
-*/
-
 export default Card;

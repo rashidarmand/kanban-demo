@@ -1,4 +1,4 @@
-# Kanban Board Example
+# Kanban Board Demo
 
 ## Simple kanban board built using React
 

@@ -58,7 +58,6 @@ h1 {
 
 .menu-options:hover {
   display: inline-block;
-  transition: all 0.4s;
   cursor: pointer;
   background: rgb(240, 240, 240);
   color: black;
