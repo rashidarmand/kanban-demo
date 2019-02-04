@@ -11,7 +11,7 @@ export default class App extends Component {
   addBoard = () => {
     const title = window.prompt('Please enter new board title');
     const newBoard = makeBoard(title);
-
+    if(!title) return;
     this.setState(prevState => ({
       boards: [...prevState.boards, newBoard]
     }));
