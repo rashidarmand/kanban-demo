@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "git-scripts": "^0.2.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-icons": "^3.3.0",
@@ -24,5 +23,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "git-scripts": "^0.2.1"
+  },
+  "git": { 
+    "scripts": {
+      "pre-push": "surge --project ./build --domain kanban-demo.surge.sh" 
+    } 
+  }
 }

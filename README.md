@@ -1,7 +1,7 @@
 # Kanban Board Demo
 
-## Simple kanban board built using React
+## Kanban board demo built using React
 
-Click [here]() to view.
+Click [here](http://kanban-demo.surge.sh/) to view.
 
 
