@@ -131,9 +131,28 @@ li {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
+  cursor: pointer;
 }
 
-.add-card {
+.cardLi:hover {
+  border: 1px solid rgb(0,0,0,0.9);
+  box-shadow: 3px 3px rgb(0,0,0,0.2);
+}
+
+.edit-icons {
+  height: 23px;
+  width: 21px;
+}
+
+.edit-icons.edit {
+  color: orange;
+}
+
+.edit-icons.X {
+  color: firebrick;
+}
+
+.add-card, .edit-card {
   width: 100%;
   font-size: 1rem;
   resize: none;

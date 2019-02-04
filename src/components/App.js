@@ -77,9 +77,8 @@ export default class App extends Component {
   }
 
   deleteCard = (boardId, cardId) => {
-    const initBoard = [...this.state.boards]
-      .find(board => board.id === boardId)
-      .cards.filter(card => card.id !== cardId);
+    const initBoard = [...this.state.boards].find(board => board.id === boardId);
+    initBoard.cards = initBoard.cards.filter(card => card.id !== cardId);
     const updatedBoardList = [...this.state.boards]
       .map(board => board.id === initBoard.id ? initBoard : board);
       
